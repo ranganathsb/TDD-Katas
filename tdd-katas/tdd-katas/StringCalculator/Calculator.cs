@@ -7,9 +7,12 @@ namespace tdd_katas.StringCalculator
     {
         public static int Add(string input)
         {
-            return string.IsNullOrEmpty(input) ? 0 : Convert.ToInt32(input);
+            return string.IsNullOrEmpty(input) ? 0 : ParseSingleNumber(input);
         }
 
-        
+        private static int ParseSingleNumber(string input)
+        {
+            return Convert.ToInt32(input);
+        }
     }
 }
