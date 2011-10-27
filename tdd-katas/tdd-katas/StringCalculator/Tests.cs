@@ -53,5 +53,18 @@ namespace tdd_katas.StringCalculator
 
             Assert.That(result, Is.EqualTo(expectation));
         }
+
+        [TestCase("//;\n1;2", 3)]
+        [TestCase("//:\n5:9", 14)]
+        [TestCase("//>\n12>12", 24)]
+        [TestCase("///\n296/3", 299)]
+        [TestCase("//;\n1;2;3;4;5;6;7;8;9;10", 55)]
+        [Test]
+        public void Add_WhenGivenDefinedDelimiter_UsesThatDelimiter(string input, int expectation)
+        {
+            var result = Calculator.Add(input);
+
+            Assert.That(result, Is.EqualTo(expectation));
+        }
     }
 }
