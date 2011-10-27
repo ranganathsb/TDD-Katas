@@ -12,7 +12,15 @@ namespace tdd_katas.StringCalculator
 
         private static int ParseInput(string input)
         {
-            return ContainsAny(input, GetPossibleDelimiters()) ? ParseMultipleNumbers(input) : ParseSingleNumber(input);
+            var delimiter = GetPossibleDelimiters();
+            var numbers = input;
+
+            if (input.StartsWith("//"))
+            {
+                delimiter = input.Substring(2, input.IndexOf("\n") - 2);
+                numbers = input.Substring(input.IndexOf("\n") + 1, input.Length - input.IndexOf("\n") - 1);
+            }
+            return ContainsAny(input, delimiter) ? ParseMultipleNumbers(numbers, delimiter) : ParseSingleNumber(numbers);
         }
 
         private static string GetPossibleDelimiters()
@@ -25,9 +33,9 @@ namespace tdd_katas.StringCalculator
             return getPossibleDelimiters.ToCharArray().Any(input.Contains);
         }
 
-        private static int ParseMultipleNumbers(string input)
+        private static int ParseMultipleNumbers(string input, string delimiter)
         {
-            var numbers = input.Split(GetPossibleDelimiters().ToCharArray());
+            var numbers = input.Split(delimiter.ToCharArray());
 
             var result = numbers.Sum(number => ParseSingleNumber(number));
             return result;
