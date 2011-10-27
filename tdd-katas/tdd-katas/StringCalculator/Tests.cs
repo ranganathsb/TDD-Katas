@@ -66,5 +66,18 @@ namespace tdd_katas.StringCalculator
 
             Assert.That(result, Is.EqualTo(expectation));
         }
+
+        [TestCase("//;\n-1;2", -1)]
+        [TestCase("5,-9", -9)]
+        [TestCase("-12\n12", -12)]
+        [TestCase("///\n-296/3", -296)]
+        [TestCase("//;\n1;2;3;4;5;6;7;-8;9;10", -8)]
+        [Test]
+        public void Add_WhenGivenNegativeNumber_ThrowsArgumentException(string input, int negativenumber)
+        {
+            var exception = Assert.Throws<ArgumentException>(() => Calculator.Add(input));
+
+            Assert.That(exception.Message, Is.EqualTo(string.Format("negatives not allowed [{0}]", negativenumber)));
+        }
     }
 }
