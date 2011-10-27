@@ -58,6 +58,13 @@ namespace tdd_katas.StringCalculator
 
         private static int ParseSingleNumber(string input)
         {
+            var result = Convert.ToInt32(input);
+
+            if (result < 0)
+            {
+                throw new ArgumentException(string.Format("negatives not allowed [{0}]", Convert.ToInt32(input)));
+            }
+
             return Convert.ToInt32(input);
         }
     }
