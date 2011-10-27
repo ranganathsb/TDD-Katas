@@ -40,5 +40,18 @@ namespace tdd_katas.StringCalculator
 
             Assert.That(result, Is.EqualTo(expectation));
         }
+
+        [TestCase("1\n2", 3)]
+        [TestCase("5\n9", 14)]
+        [TestCase("12\n12", 24)]
+        [TestCase("296\n3", 299)]
+        [TestCase("1\n2\n3\n4\n5\n6\n7\n8\n9\n10", 55)]
+        [Test]
+        public void Add_WhenGivenNewLine_UsesThatAsDelimiterInsteadOfComma(string input, int expectation)
+        {
+            var result = Calculator.Add(input);
+
+            Assert.That(result, Is.EqualTo(expectation));
+        }
     }
 }
