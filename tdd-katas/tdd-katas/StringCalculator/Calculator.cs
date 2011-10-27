@@ -56,16 +56,21 @@ namespace tdd_katas.StringCalculator
             return result;
         }
 
-        private static int ParseSingleNumber(string input)
+        private static int ParseSingleNumber(string number)
         {
-            var result = Convert.ToInt32(input);
+            var result = Convert.ToInt32(number);
 
-            if (result < 0)
+            GuardAgainstNegativeNumbers(result);
+
+            return result;
+        }
+
+        private static void GuardAgainstNegativeNumbers(int number)
+        {
+            if (number < 0)
             {
-                throw new ArgumentException(string.Format("negatives not allowed [{0}]", Convert.ToInt32(input)));
+                throw new ArgumentException(string.Format("negatives not allowed [{0}]", number));
             }
-
-            return Convert.ToInt32(input);
         }
     }
 }
