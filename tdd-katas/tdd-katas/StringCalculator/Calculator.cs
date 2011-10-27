@@ -7,7 +7,7 @@ namespace tdd_katas.StringCalculator
     {
         public static int Add(string input)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         
