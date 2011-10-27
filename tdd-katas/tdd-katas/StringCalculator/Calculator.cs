@@ -17,7 +17,7 @@ namespace tdd_katas.StringCalculator
 
         private static string GetPossibleDelimiters()
         {
-            return ",";
+            return ",\n";
         }
 
         private static bool ContainsAny(string input, string getPossibleDelimiters)
