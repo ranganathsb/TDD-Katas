@@ -7,17 +7,29 @@ namespace tdd_katas.StringCalculator
     {
         public static int Add(string input)
         {
-            if (string.IsNullOrEmpty(input))
-                return 0;
-            
-            if (input.Contains(","))
-            {
-                var numbers = input.Split(",".ToCharArray());
+            return InputHasNoNumbers(input) ? 0 : InputHasMultipleNumbers(input) ? ParseAndSumMultipleNumbers(input) : ParseSingleNumber(input);
+        }
 
-                return numbers.Sum(x => Convert.ToInt32(x));
-            }
-            
+        private static bool InputHasNoNumbers(string input)
+        {
+            return string.IsNullOrEmpty(input);
+        }
+
+        private static bool InputHasMultipleNumbers(string input)
+        {
+            return input.Contains(",");
+        }
+
+        private static int ParseSingleNumber(string input)
+        {
             return Convert.ToInt32(input);
+        }
+
+        private static int ParseAndSumMultipleNumbers(string input)
+        {
+            var numbers = input.Split(",".ToCharArray());
+
+            return numbers.Sum(x => Convert.ToInt32(x));
         }
     }
 }
