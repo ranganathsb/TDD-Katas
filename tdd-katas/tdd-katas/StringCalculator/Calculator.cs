@@ -7,10 +7,7 @@ namespace tdd_katas.StringCalculator
     {
         public static int Add(string input)
         {
-            if (string.IsNullOrEmpty(input))
-                return 0;
-
-            return Convert.ToInt32(input);
+            return string.IsNullOrEmpty(input) ? 0 : Convert.ToInt32(input);
         }
     }
 }
