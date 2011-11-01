@@ -7,7 +7,17 @@ namespace tdd_katas.StringCalculator
     {
         public static int Add(string input)
         {
-            return string.IsNullOrEmpty(input) ? 0 : Convert.ToInt32(input);
+            if (string.IsNullOrEmpty(input))
+                return 0;
+            
+            if (input.Contains(","))
+            {
+                var numbers = input.Split(",".ToCharArray());
+
+                return numbers.Sum(x => Convert.ToInt32(x));
+            }
+            
+            return Convert.ToInt32(input);
         }
     }
 }
