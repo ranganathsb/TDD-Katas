@@ -18,17 +18,19 @@ namespace tdd_katas.StringCalculator
             Assert.That(result, Is.EqualTo(0));
         }
 
+        [TestCase("100", 100)]
+        [TestCase("10", 10)]
+        [TestCase("1", 1)]
         [Test]
-        public void Add_WhenGivenOneNumber_ShouldReturnThatNumber()
+        public void Add_WhenGivenOneNumber_ShouldReturnThatNumber(string input, int expected)
         {
             //Arrange
-            var number = "1";
-
+            
             //Act
-            var result = Calculator.Add(number);
+            var result = Calculator.Add(input);
 
             //Assert
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(expected));
         }
         
     }
