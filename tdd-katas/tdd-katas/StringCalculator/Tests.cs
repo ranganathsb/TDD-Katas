@@ -32,6 +32,21 @@ namespace tdd_katas.StringCalculator
             //Assert
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase("100,101", 201)]
+        [TestCase("10,11", 21)]
+        [TestCase("1,2", 3)]
+        [Test]
+        public void Add_WhenGivenTwoNumbers_ShouldReturnSumOfTwoNumbers(string input, int expected)
+        {
+            //Arrange
+
+            //Act
+            var result = Calculator.Add(input);
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
         
     }
 }
